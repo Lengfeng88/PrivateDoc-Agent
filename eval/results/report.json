@@ -1,0 +1,304 @@
+{
+  "metadata": {
+    "api_url": "http://localhost:8000",
+    "judge_model": "gpt-4o",
+    "mock": true,
+    "routes_filter": null,
+    "timestamp_utc": "2026-05-10T02:32:38.962275+00:00",
+    "total_items": 22,
+    "error_count": 0,
+    "duration_total_s": 0.0
+  },
+  "scores": {
+    "faithfulness": 0.97,
+    "answer_relevancy": 0.95,
+    "context_recall": 0.93
+  },
+  "ci_gate": {
+    "passed": true,
+    "results": {
+      "faithfulness": {
+        "score": 0.97,
+        "threshold": 0.8,
+        "passed": true
+      },
+      "answer_relevancy": {
+        "score": 0.95,
+        "threshold": 0.75,
+        "passed": true
+      },
+      "context_recall": {
+        "score": 0.93,
+        "threshold": 0.7,
+        "passed": true
+      }
+    }
+  },
+  "cost_summary": {
+    "total_cost_usd": 0.0,
+    "local_queries": 22,
+    "azure_queries": 0,
+    "pct_local": 100.0,
+    "avg_cost_per_query_usd": 0.0
+  },
+  "route_breakdown": {
+    "SIMPLE": {
+      "count": 10,
+      "answered": 10,
+      "avg_duration_s": 0.0,
+      "avg_cost_usd": 0.0,
+      "avg_loops": 1.0
+    },
+    "COMPLEX": {
+      "count": 12,
+      "answered": 12,
+      "avg_duration_s": 0.0,
+      "avg_cost_usd": 0.0,
+      "avg_loops": 1.0
+    }
+  },
+  "per_item_results": [
+    {
+      "id": "sq3-001",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 97,
+      "error": ""
+    },
+    {
+      "id": "sq3-002",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 70,
+      "error": ""
+    },
+    {
+      "id": "sq3-003",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 101,
+      "error": ""
+    },
+    {
+      "id": "sq3-004",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 161,
+      "error": ""
+    },
+    {
+      "id": "sq3-005",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 104,
+      "error": ""
+    },
+    {
+      "id": "sq3-006",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 123,
+      "error": ""
+    },
+    {
+      "id": "sq3-007",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 108,
+      "error": ""
+    },
+    {
+      "id": "sq3-008",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 93,
+      "error": ""
+    },
+    {
+      "id": "sq3-009",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 102,
+      "error": ""
+    },
+    {
+      "id": "sq3-010",
+      "route": "SIMPLE",
+      "difficulty": "easy",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 94,
+      "error": ""
+    },
+    {
+      "id": "sq3-011",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 323,
+      "error": ""
+    },
+    {
+      "id": "sq3-012",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 263,
+      "error": ""
+    },
+    {
+      "id": "sq3-013",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 301,
+      "error": ""
+    },
+    {
+      "id": "sq3-014",
+      "route": "COMPLEX",
+      "difficulty": "hard",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 353,
+      "error": ""
+    },
+    {
+      "id": "sq3-015",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 351,
+      "error": ""
+    },
+    {
+      "id": "sq3-016",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 336,
+      "error": ""
+    },
+    {
+      "id": "sq3-017",
+      "route": "COMPLEX",
+      "difficulty": "hard",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 329,
+      "error": ""
+    },
+    {
+      "id": "sq3-018",
+      "route": "COMPLEX",
+      "difficulty": "hard",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 338,
+      "error": ""
+    },
+    {
+      "id": "sq3-019",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 390,
+      "error": ""
+    },
+    {
+      "id": "sq3-020",
+      "route": "COMPLEX",
+      "difficulty": "medium",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 333,
+      "error": ""
+    },
+    {
+      "id": "sq3-021",
+      "route": "COMPLEX",
+      "difficulty": "hard",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 440,
+      "error": ""
+    },
+    {
+      "id": "sq3-022",
+      "route": "COMPLEX",
+      "difficulty": "hard",
+      "used_backend": "local",
+      "duration_s": 0.0,
+      "cost_usd": 0.0,
+      "loop_count": 1,
+      "answer_len": 355,
+      "error": ""
+    }
+  ]
+}
