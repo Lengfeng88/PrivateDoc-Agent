@@ -1,0 +1,142 @@
+version: "3.9"
+
+# ─────────────────────────────────────────────────────────────────────────────
+# PrivateDoc Agent — local dev stack
+#
+# Services:
+#   qdrant        vector DB  (localhost:6333)
+#   llama-server  llama.cpp HTTP server (localhost:8080)
+#   api           FastAPI backend (localhost:8000)
+#   frontend      Vite dev server (localhost:5173)  [profile: frontend]
+#
+# Usage:
+#   docker compose up -d                    # api + qdrant + llama-server
+#   docker compose --profile frontend up    # include Vite dev server
+#   docker compose logs -f api              # stream api logs
+# ─────────────────────────────────────────────────────────────────────────────
+
+x-restart: &restart
+  restart: unless-stopped
+
+x-logging: &logging
+  logging:
+    driver: json-file
+    options:
+      max-size: "20m"
+      max-file: "5"
+
+services:
+
+  # ── Qdrant ──────────────────────────────────────────────────────────────────
+  qdrant:
+    image: qdrant/qdrant:v1.10.1
+    <<: [*restart, *logging]
+    ports:
+      - "6333:6333"   # HTTP / REST
+      - "6334:6334"   # gRPC
+    volumes:
+      - qdrant_data:/qdrant/storage
+    environment:
+      QDRANT__SERVICE__GRPC_PORT: 6334
+      QDRANT__LOG_LEVEL: INFO
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:6333/healthz"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── llama.cpp server (Llama-3.1-8B-Instruct Q4_K_M) ────────────────────────
+  # GPU build — falls back gracefully to CPU if no CUDA device present.
+  # Mount your local model cache at ./models to avoid re-downloading.
+  llama-server:
+    image: ghcr.io/ggerganov/llama.cpp:server-cuda
+    <<: [*restart, *logging]
+    ports:
+      - "8080:8080"
+    volumes:
+      - ${MODEL_DIR:-./models}:/models:ro
+    command: >
+      --host 0.0.0.0
+      --port 8080
+      --model /models/${LLAMA_MODEL_FILE:-Meta-Llama-3.1-8B-Instruct-Q4_K_M.gguf}
+      --ctx-size 8192
+      --n-gpu-layers 35
+      --threads 8
+      --parallel 4
+      --cont-batching
+      --flash-attn
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8080/health"]
+      interval: 15s
+      timeout: 10s
+      retries: 8
+      start_period: 60s
+
+  # ── FastAPI backend ──────────────────────────────────────────────────────────
+  api:
+    build:
+      context: ..
+      dockerfile: infra/Dockerfile
+      target: runtime
+    <<: [*restart, *logging]
+    ports:
+      - "8000:8000"
+    volumes:
+      # hot-reload in dev: mount source so uvicorn --reload sees changes
+      - ../api:/app/api:ro
+      - ../agent:/app/agent:ro
+      - ../ingest:/app/ingest:ro
+      - ../router:/app/router:ro
+      - ../eval:/app/eval:ro
+      - audit_logs:/app/logs
+    environment:
+      QDRANT_URL:              http://qdrant:6333
+      LLAMA_SERVER_URL:        http://llama-server:8080
+      AZURE_OPENAI_ENDPOINT:   ${AZURE_OPENAI_ENDPOINT:-}
+      AZURE_OPENAI_API_KEY:    ${AZURE_OPENAI_API_KEY:-}
+      AZURE_OPENAI_DEPLOYMENT: ${AZURE_OPENAI_DEPLOYMENT:-gpt-4o}
+      LANGCHAIN_TRACING_V2:    ${LANGCHAIN_TRACING_V2:-false}
+      LANGCHAIN_API_KEY:       ${LANGCHAIN_API_KEY:-}
+      LANGCHAIN_PROJECT:       privatedoc-agent
+      LOG_LEVEL:               INFO
+      AUDIT_LOG_PATH:          /app/logs/audit.jsonl
+      PII_REDACT_ENABLED:      "true"
+      MAX_RETRIEVAL_LOOPS:     3
+    depends_on:
+      qdrant:
+        condition: service_healthy
+      llama-server:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-sf", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── Vite dev server (optional — activate with --profile frontend) ────────────
+  frontend:
+    profiles: [frontend]
+    image: node:20-alpine
+    <<: *logging
+    working_dir: /app
+    volumes:
+      - ../frontend:/app
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_BASE: ""
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    depends_on:
+      - api
+
+volumes:
+  qdrant_data:
+  audit_logs:
