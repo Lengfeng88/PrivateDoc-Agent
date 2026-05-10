@@ -3,11 +3,6 @@
 **Local-first, privacy-preserving RAG with cost-aware routing.**  
 Raw documents never touch the network at any stage.
 
-[![CI](https://github.com/yourhandle/privatedoc-agent/actions/workflows/ci.yml/badge.svg)](https://github.com/yourhandle/privatedoc-agent/actions/workflows/ci.yml)
-[![RAGAS faithfulness](https://img.shields.io/badge/faithfulness-0.91-0F6E56)](notebooks/demo.ipynb)
-[![Python 3.11](https://img.shields.io/badge/python-3.11-blue)](pyproject.toml)
-[![License: MIT](https://img.shields.io/badge/license-MIT-888)](LICENSE)
-
 ---
 
 ## What it does
