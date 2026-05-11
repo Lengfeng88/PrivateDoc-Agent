@@ -1,0 +1,32 @@
+name: CI — eval gate
+
+on: [push, pull_request]
+
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run route classifier tests
+        run: pytest eval/route_eval.py -v
+        # 路由准确率必须 ≥ 90% 才能继续
+
+      - name: Run RAGAS eval
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python eval/ragas_eval.py --output eval/results.json
+          python -c "
+          import json, sys
+          r = json.load(open('eval/results.json'))
+          assert r['faithfulness'] >= 0.80, f'faithfulness {r[\"faithfulness\"]} < 0.80'
+          assert r['answer_relevancy'] >= 0.75, 'relevancy gate failed'
+          print('Eval passed:', r)
+          "
+
+      - name: Upload eval report
+        uses: actions/upload-artifact@v4
+        with:
+          name: ragas-report
+          path: eval/results.json

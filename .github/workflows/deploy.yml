@@ -1,0 +1,141 @@
+name: Deploy
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+# Only deploy when CI fully passed
+jobs:
+
+  gate-check:
+    name: Verify CI passed
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - run: echo "CI passed — proceeding with deploy"
+
+  # ── Build & push Docker image to ACR ───────────────────────────────────────
+  build-push:
+    name: Build & push image
+    runs-on: ubuntu-latest
+    needs: gate-check
+    outputs:
+      image_tag: ${{ steps.meta.outputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Log in to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Extract image metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ secrets.ACR_LOGIN_SERVER }}/privatedoc-api
+          tags: |
+            type=sha,prefix=git-
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build & push
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: infra/Dockerfile
+          target: runtime
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ── Deploy Bicep infrastructure (idempotent) ────────────────────────────────
+  bicep-deploy:
+    name: Bicep deploy
+    runs-on: ubuntu-latest
+    needs: build-push
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Deploy Bicep
+        uses: azure/arm-deploy@v2
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ secrets.AZURE_RESOURCE_GROUP }}
+          template: infra/main.bicep
+          parameters: >
+            env=prod
+            imageTag=${{ needs.build-push.outputs.image_tag }}
+            azureOaiEndpoint=${{ secrets.AZURE_OPENAI_ENDPOINT }}
+            azureOaiKey=${{ secrets.AZURE_OPENAI_API_KEY }}
+            langsmithKey=${{ secrets.LANGSMITH_API_KEY }}
+          failOnStdErr: false
+
+  # ── Deploy frontend to Static Web Apps ─────────────────────────────────────
+  deploy-frontend:
+    name: Deploy frontend
+    runs-on: ubuntu-latest
+    needs: bicep-deploy
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Build frontend with prod API URL
+        working-directory: frontend
+        env:
+          VITE_API_BASE: ${{ secrets.API_BASE_URL }}
+        run: npm ci && npm run build
+
+      - name: Deploy to Azure Static Web Apps
+        uses: Azure/static-web-apps-deploy@v1
+        with:
+          azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          action: upload
+          app_location: frontend
+          output_location: dist
+          skip_app_build: true  # built above with correct env vars
+
+  # ── Post-deploy smoke test ──────────────────────────────────────────────────
+  smoke-test:
+    name: Smoke test
+    runs-on: ubuntu-latest
+    needs: [deploy-frontend, bicep-deploy]
+    steps:
+      - name: Health check API
+        run: |
+          for i in $(seq 1 10); do
+            STATUS=$(curl -sf -o /dev/null -w "%{http_code}" "${{ secrets.API_BASE_URL }}/health" || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "API healthy after $i attempt(s)"; exit 0
+            fi
+            echo "Attempt $i: status $STATUS — waiting 10s..."
+            sleep 10
+          done
+          echo "API did not become healthy within 100s"; exit 1
+
+      - name: Notify success
+        if: success()
+        run: |
+          echo "Deploy complete."
+          echo "  API:      ${{ secrets.API_BASE_URL }}"
+          echo "  Frontend: ${{ secrets.FRONTEND_URL }}"
