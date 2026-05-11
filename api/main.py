@@ -615,7 +615,7 @@ async def health() -> HealthResponse:
             t0 = time.perf_counter()
             local_url = os.getenv("LOCAL_LLM_URL", "http://localhost:8080")
             async with httpx.AsyncClient(timeout=3.0) as client:
-                r = await client.get(f"{local_url}/health")
+                r = await client.get(f"{local_url}/v1/models")
             ok = r.status_code == 200
             return BackendStatus(
                 name="local_llm",

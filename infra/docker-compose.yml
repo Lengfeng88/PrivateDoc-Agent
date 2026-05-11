@@ -97,7 +97,7 @@ services:
       - audit_logs:/app/logs
     environment:
       QDRANT_URL:              http://qdrant:6333
-      LLAMA_SERVER_URL:        http://llama-server:8080
+      LOCAL_LLM_URL:           http://172.18.0.1:8080
       AZURE_OPENAI_ENDPOINT:   ${AZURE_OPENAI_ENDPOINT:-}
       AZURE_OPENAI_API_KEY:    ${AZURE_OPENAI_API_KEY:-}
       AZURE_OPENAI_DEPLOYMENT: ${AZURE_OPENAI_DEPLOYMENT:-gpt-4o}
