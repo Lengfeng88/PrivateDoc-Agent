@@ -1,0 +1,10 @@
+query_id,route,difficulty,run,query,total_ms,used_backend,loop_count,cost_usd,confidence,answer_len,num_citations,error,route_label,cloud_allowed,ttft_ms
+simple_easy_00,SIMPLE,easy,1,What was total revenue in Q3 2024?,29381.1,local,3,0.0,0.35,358,0,,SIMPLE,True,29021.5
+simple_easy_00,SIMPLE,easy,1,What was the gross profit margin in Q3 2024?,10360.6,local,3,0.0,0.0,22,0,,SIMPLE,True,10610.4
+simple_easy_00,SIMPLE,easy,1,What was monthly recurring revenue at end of Q3 2024?,10063.7,local,3,0.0,0.0,22,0,,SIMPLE,True,10035.0
+complex_medium_00,COMPLEX,medium,1,Compare gross margin year over year and explain what drove the change.,24838.8,local,3,0.0,0.0,489,0,,COMPLEX,True,18695.7
+complex_medium_00,COMPLEX,medium,1,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,23565.3,local,3,0.0,0.0,250,0,,SIMPLE,True,23227.8
+complex_hard_00,COMPLEX,hard,1,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,26723.0,local,3,0.0,0.0,455,0,,COMPLEX,True,30500.6
+complex_hard_00,COMPLEX,hard,1,What does management say about international growth and how does GMV distributio,10747.2,local,3,0.0,0.0,22,0,,COMPLEX,True,10857.3
+sensitive_easy_00,SENSITIVE,easy,1,What are the salaries of Shopify executives listed in this filing?,10492.5,local,3,0.0,0.0,22,0,,SENSITIVE,False,11631.1
+sensitive_easy_00,SENSITIVE,easy,1,Show me personal contact information for board members.,10789.7,local,3,0.0,0.0,22,0,,SENSITIVE,False,10868.3

@@ -9,7 +9,7 @@ export default defineConfig({
       // dev-time proxy: all /api/* → FastAPI on :8000
       "/ingest":   { target: "http://localhost:8000", changeOrigin: true },
       "/classify": { target: "http://localhost:8000", changeOrigin: true },
-      "/stream":   { target: "http://localhost:8000", changeOrigin: true },
+      "/query/stream": { target: "http://localhost:8000", changeOrigin: true },
       "/query":    { target: "http://localhost:8000", changeOrigin: true },
       "/eval":     { target: "http://localhost:8000", changeOrigin: true },
       "/audit":    { target: "http://localhost:8000", changeOrigin: true },

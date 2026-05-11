@@ -1,0 +1,46 @@
+query_id,route,difficulty,run,query,total_ms,ttft_ms,used_backend,loop_count,cost_usd,confidence,answer_len,num_citations,route_label,cloud_allowed,error
+simple_easy_00,SIMPLE,easy,1,What was total revenue in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_01,SIMPLE,easy,2,What was total revenue in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_02,SIMPLE,easy,3,What was total revenue in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_03,SIMPLE,easy,4,What was total revenue in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_04,SIMPLE,easy,5,What was total revenue in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_00,SIMPLE,easy,1,What was the gross profit margin in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_01,SIMPLE,easy,2,What was the gross profit margin in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_02,SIMPLE,easy,3,What was the gross profit margin in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_03,SIMPLE,easy,4,What was the gross profit margin in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_04,SIMPLE,easy,5,What was the gross profit margin in Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_00,SIMPLE,easy,1,What was monthly recurring revenue at end of Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_01,SIMPLE,easy,2,What was monthly recurring revenue at end of Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_02,SIMPLE,easy,3,What was monthly recurring revenue at end of Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_03,SIMPLE,easy,4,What was monthly recurring revenue at end of Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+simple_easy_04,SIMPLE,easy,5,What was monthly recurring revenue at end of Q3 2024?,-1.0,-1.0,error,0,0.0,0.0,0,0,SIMPLE,True,[Errno 111] Connection refused
+complex_medium_00,COMPLEX,medium,1,Compare gross margin year over year and explain what drove the change.,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_01,COMPLEX,medium,2,Compare gross margin year over year and explain what drove the change.,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_02,COMPLEX,medium,3,Compare gross margin year over year and explain what drove the change.,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_03,COMPLEX,medium,4,Compare gross margin year over year and explain what drove the change.,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_04,COMPLEX,medium,5,Compare gross margin year over year and explain what drove the change.,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_00,COMPLEX,medium,1,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_01,COMPLEX,medium,2,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_02,COMPLEX,medium,3,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_03,COMPLEX,medium,4,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_medium_04,COMPLEX,medium,5,How did operating expenses change as a percentage of revenue in Q3 2024 vs Q3 20,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_00,COMPLEX,hard,1,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_01,COMPLEX,hard,2,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_02,COMPLEX,hard,3,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_03,COMPLEX,hard,4,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_04,COMPLEX,hard,5,Calculate the revenue take rate for Q3 2024 and compare it to Q3 2023. What tren,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_00,COMPLEX,hard,1,What does management say about international growth and how does GMV distributio,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_01,COMPLEX,hard,2,What does management say about international growth and how does GMV distributio,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_02,COMPLEX,hard,3,What does management say about international growth and how does GMV distributio,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_03,COMPLEX,hard,4,What does management say about international growth and how does GMV distributio,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+complex_hard_04,COMPLEX,hard,5,What does management say about international growth and how does GMV distributio,-1.0,-1.0,error,0,0.0,0.0,0,0,COMPLEX,True,[Errno 111] Connection refused
+sensitive_easy_00,SENSITIVE,easy,1,What are the salaries of Shopify executives listed in this filing?,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_01,SENSITIVE,easy,2,What are the salaries of Shopify executives listed in this filing?,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_02,SENSITIVE,easy,3,What are the salaries of Shopify executives listed in this filing?,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_03,SENSITIVE,easy,4,What are the salaries of Shopify executives listed in this filing?,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_04,SENSITIVE,easy,5,What are the salaries of Shopify executives listed in this filing?,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_00,SENSITIVE,easy,1,Show me personal contact information for board members.,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_01,SENSITIVE,easy,2,Show me personal contact information for board members.,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_02,SENSITIVE,easy,3,Show me personal contact information for board members.,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_03,SENSITIVE,easy,4,Show me personal contact information for board members.,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused
+sensitive_easy_04,SENSITIVE,easy,5,Show me personal contact information for board members.,-1.0,-1.0,error,0,0.0,0.0,0,0,SENSITIVE,True,[Errno 111] Connection refused

@@ -103,7 +103,7 @@ export default function AgentChat() {
 
     try {
       abortRef.current = new AbortController();
-      const res = await fetch(`${API_BASE}/stream`, {
+      const res = await fetch(`${API_BASE}/query/stream`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ query: text }),
@@ -132,14 +132,25 @@ export default function AgentChat() {
             setMessages((prev) =>
               prev.map((m) => {
                 if (m.id !== asstId) return m;
+                // handle backend SSE format: {type, result, ...}
+                if (ev.type === "done" && ev.result) {
+                  return {
+                    ...m,
+                    content: ev.result.final_answer ?? m.content,
+                    route: ev.result.route_badge?.label ?? m.route,
+                    path: ev.result.used_backend === "local" ? "local fast path" : ev.result.used_backend,
+                    chunks: ev.result.citations ?? m.chunks,
+                    latencyMs: Date.now() - startTime,
+                    streaming: false,
+                  };
+                }
+                if (ev.type === "route") {
+                  return { ...m, route: ev.route_badge?.label ?? m.route };
+                }
                 return {
                   ...m,
                   content: ev.token ? m.content + ev.token : m.content,
-                  route: ev.route ?? m.route,
-                  path: ev.path ?? m.path,
-                  chunks: ev.chunks ?? m.chunks,
-                  latencyMs: ev.done ? Date.now() - startTime : m.latencyMs,
-                  streaming: ev.done ? false : true,
+                  streaming: true,
                 };
               })
             );

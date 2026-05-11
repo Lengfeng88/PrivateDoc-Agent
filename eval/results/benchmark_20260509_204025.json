@@ -1,0 +1,83 @@
+{
+  "timestamp": "20260509_204025",
+  "config": {
+    "api_url": "http://localhost:8000",
+    "runs": 5,
+    "mock": false
+  },
+  "aggregate": {
+    "COMPLEX": {
+      "n_total": 20,
+      "n_success": 0,
+      "n_error": 20,
+      "latency_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "ttft_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "avg_loops": 0.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0,
+      "pct_local": 0.0,
+      "pct_azure": 0.0
+    },
+    "SENSITIVE": {
+      "n_total": 10,
+      "n_success": 0,
+      "n_error": 10,
+      "latency_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "ttft_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "avg_loops": 0.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0,
+      "pct_local": 0.0,
+      "pct_azure": 0.0
+    },
+    "SIMPLE": {
+      "n_total": 15,
+      "n_success": 0,
+      "n_error": 15,
+      "latency_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "ttft_ms": {
+        "mean": 0.0,
+        "min": 0.0,
+        "max": 0.0,
+        "p95": 0.0
+      },
+      "avg_loops": 0.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0,
+      "pct_local": 0.0,
+      "pct_azure": 0.0
+    },
+    "_overall": {
+      "n_total": 45,
+      "n_success": 0,
+      "total_cost_usd": 0,
+      "pct_local": 0.0,
+      "avg_latency_ms": 0.0
+    }
+  }
+}

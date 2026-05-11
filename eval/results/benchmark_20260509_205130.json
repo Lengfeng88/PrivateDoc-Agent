@@ -1,0 +1,83 @@
+{
+  "timestamp": "20260509_205130",
+  "config": {
+    "api_url": "http://localhost:8000",
+    "runs": 1,
+    "mock": false
+  },
+  "aggregate": {
+    "COMPLEX": {
+      "n_total": 4,
+      "n_success": 4,
+      "n_error": 0,
+      "latency_ms": {
+        "mean": 21468.6,
+        "min": 10747.2,
+        "max": 26723.0,
+        "p95": 24838.8
+      },
+      "ttft_ms": {
+        "mean": 20820.3,
+        "min": 10857.3,
+        "max": 30500.6,
+        "p95": 23227.8
+      },
+      "avg_loops": 3.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "pct_local": 100.0,
+      "pct_azure": 0.0
+    },
+    "SENSITIVE": {
+      "n_total": 2,
+      "n_success": 2,
+      "n_error": 0,
+      "latency_ms": {
+        "mean": 10641.1,
+        "min": 10492.5,
+        "max": 10789.7,
+        "p95": 10492.5
+      },
+      "ttft_ms": {
+        "mean": 11249.7,
+        "min": 10868.3,
+        "max": 11631.1,
+        "p95": 10868.3
+      },
+      "avg_loops": 3.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "pct_local": 100.0,
+      "pct_azure": 0.0
+    },
+    "SIMPLE": {
+      "n_total": 3,
+      "n_success": 3,
+      "n_error": 0,
+      "latency_ms": {
+        "mean": 16601.8,
+        "min": 10063.7,
+        "max": 29381.1,
+        "p95": 10360.6
+      },
+      "ttft_ms": {
+        "mean": 16555.6,
+        "min": 10035.0,
+        "max": 29021.5,
+        "p95": 10610.4
+      },
+      "avg_loops": 3.0,
+      "avg_cost_usd": 0.0,
+      "total_cost_usd": 0.0,
+      "pct_local": 100.0,
+      "pct_azure": 0.0
+    },
+    "_overall": {
+      "n_total": 9,
+      "n_success": 9,
+      "total_cost_usd": 0.0,
+      "pct_local": 100.0,
+      "avg_latency_ms": 17440.2
+    }
+  }
+}

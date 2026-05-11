@@ -1,0 +1,67 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 14px;
+  background: #0d0f0e;
+  color: #e8e6df;
+  min-height: 100vh;
+}
+
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.app-header {
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  padding: 0 24px;
+  background: #111312;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  height: 52px;
+}
+
+.brand-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: #f0ede6;
+  margin-right: 10px;
+}
+
+.brand-tag {
+  font-size: 11px;
+  color: #5DCAA5;
+  background: rgba(93,202,165,0.10);
+  border: 0.5px solid rgba(93,202,165,0.25);
+  padding: 2px 7px;
+  border-radius: 20px;
+}
+
+.app-nav {
+  display: flex;
+  border-bottom: 0.5px solid rgba(255,255,255,0.08);
+  background: #111312;
+  padding: 0 24px;
+}
+
+.nav-tab {
+  font-size: 13px;
+  color: #888;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 10px 16px;
+  cursor: pointer;
+}
+
+.nav-tab:hover { color: #d0cfc8; }
+.nav-tab.active { color: #5DCAA5; border-bottom-color: #5DCAA5; }
+
+.app-main { flex: 1; padding: 24px; }
